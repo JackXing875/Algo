@@ -1,16 +1,17 @@
 #include <iostream>
+#include <cstdint>
 
-template <typename T>
-bool compare(T a, T b)
-{
-    return !(a ^ b);
+uint32_t rol(uint32_t x, unsigned n) {
+    return (x << n) | (x >> (32 - n));
 }
 
-int main(int argc, char *argv[])
-{
-    int a = 3, b = 5;
-    int x = 1, y = 1;
-    std::cout << compare(a, b) << std::endl;
-    std::cout << compare(x, y) << std::endl;
+uint32_t ror(uint32_t x, unsigned n) {
+    return (x >> n) | (x << (32 - n));
+}
+
+int main() {
+    uint32_t x = 0xB6; // 1011 0110
+    std::cout << rol(x, 2) << std::endl; // 循环左移
+    std::cout << ror(x, 2) << std::endl; // 循环右移
     return 0;
 }
