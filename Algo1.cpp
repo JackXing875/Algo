@@ -7,6 +7,13 @@
 #include <limits>
 #include <unordered_map>
 
+bool isChinesePunct(wchar_t ch)
+{
+    std::wstring chinesePuncts = L"，。！？；：《》【】（）“”‘’";
+
+    return chinesePuncts.find(ch) != std::wstring::npos;
+}
+
 template <typename T>
 class ListNode
 {
@@ -306,13 +313,6 @@ public:
 
     ~LinkedList() { clear(); }
 };
-
-bool isChinesePunct(wchar_t ch)
-{
-    std::wstring chinesePuncts = L"，。！？；：《》【】（）“”‘’";
-
-    return chinesePuncts.find(ch) != std::wstring::npos;
-}
 
 
 int main(int argc, char *argv[])
