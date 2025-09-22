@@ -5,6 +5,7 @@
 #include <sstream>
 #include <cwchar>
 #include <limits>
+#include <unordered_map>
 
 template <typename T>
 class ListNode
@@ -25,17 +26,20 @@ private:
 public:
     LinkedList() : head(nullptr) {}
 
-    void print(LinkedList<T> list)
+    void print() const
     {
         ListNode<T> temp = head;
         while (temp)
-            std::cout << temp->val << std::endl;
+        {
+            std::wcout << temp->val << std::endl;
+            temp = temp->next;
+        }      
     }
 
     void create(const std::vector<T>& array)
     {
         clear();
-        if(array.empty()) 
+        if (array.empty()) 
         {
             head = nullptr;
             return ;
@@ -44,7 +48,7 @@ public:
         head = new ListNode<T>(array[0]);
         ListNode<T>* cur = head;
 
-        for(size_t i = 1; i < array.size(); i++)
+        for (size_t i = 1; i < array.size(); i++)
         {
             cur->next = new ListNode<T>(array[i]);
             cur = cur->next;
@@ -53,47 +57,37 @@ public:
 
     bool isEmpty() const { return !head; }
 
-    size_t getSize(ListNode<T>* head) const
+    size_t getLength() const
     {
         ListNode<T>* cur = head;
-        size_t num = 0;
+        size_t length = 0;
 
-        while(cur)
+        while (cur)
         {
-            num++;
+            length++;
             cur = cur->next;
         }
 
-        return num;
-    }
-
-    void traversal() const
-    {
-        ListNode<T>* cur = head;
-        while(cur)
-        {
-            std::cout << cur->val << std::endl;
-            cur = cur->next;
-        }
+        return length;
     }
 
     void append(T value)
     {
-        if(!head)
+        if (!head)
         {
             head = new ListNode<T>(value);
             return ;
         }
 
         ListNode<T>* cur = head;
-        while(cur && cur->next) cur = cur->next;
+        while (cur && cur->next) cur = cur->next;
 
         cur->next = new ListNode<T>(value);
     }
 
     T get(size_t index) 
     {
-        if(!head) throw std::out_of_range("Cannot get value in an empty list");
+        if (!head) throw std::out_of_range("Cannot get value in an empty list");
 
         ListNode<T>* cur = head;
         size_t i = 0;
@@ -112,7 +106,7 @@ public:
 
     void set(size_t index, T value)
     {
-        if(!head) throw std::out_of_range("Empty list");
+        if (!head) throw std::out_of_range("Empty list");
 
         ListNode<T>* cur = head;
         size_t i = 0;
@@ -131,7 +125,7 @@ public:
 
     void insert(size_t index, T value)
     {
-        if(index == 0)
+        if (index == 0)
         {
             ListNode<T>* newnode = new ListNode<T>(value);
             newnode->next = head;
@@ -151,7 +145,7 @@ public:
         if (!cur)
             throw std::out_of_range("Index out of range");
 
-        ListNode<T>* temp = cur->next;
+        ListNode<T> *temp = cur->next;
 
         cur->next = new ListNode<T>(value);
         cur->next->next = temp;
@@ -159,10 +153,10 @@ public:
 
     void remove(size_t index) 
     {
-        if(!head)
+        if (!head)
             throw std::out_of_range("Cannot remove from an empty list");
 
-        if(index == 0) 
+        if (index == 0) 
         {
             ListNode<T>* newhead = head->next;
             delete head;
@@ -171,14 +165,14 @@ public:
         }
 
         ListNode<T>* cur = head;
-        for(size_t i = 0;i < index - 1;i++) 
+        for (size_t i = 0;i < index - 1;i++) 
         {
-            if(!cur->next)
+            if (!cur->next)
                 throw std::out_of_range("Index out of range");
             cur = cur->next;
         }
 
-        if(!cur->next)
+        if (!cur->next)
             throw std::out_of_range("Index out of range");
 
         ListNode<T>* toDelete = cur->next;
@@ -186,10 +180,94 @@ public:
         delete toDelete;
     }
 
+    bool find(T value)
+    {
+        ListNode<T> *temp = head;
+
+        while (temp)
+        {
+            if (temp->val == value)
+                return true;
+            temp = temp->next;
+        }
+
+        return false;
+    }
+
+    ListNode<T>* reverseList(ListNode<T>* head) 
+    {
+        ListNode *prev = nullptr;
+        ListNode *cur = head;
+
+        while (cur)
+        {
+            ListNode *nextNode = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = nextNode;
+        }
+
+        return prev;
+    }
+
+    bool isSymmetry()
+    {
+        ListNode *slow = head, *fast = head;
+        
+        while (fast && fast->next)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        ListNode* half = reverseList(slow);
+        ListNode *left = head, *right = half;
+
+        while (right)
+        {
+            if(left->val != right->val)
+                return false;
+            left = left->next;
+            right = right->next;
+        }
+
+        return true;
+    }
+
+    void reverse() 
+    {
+        ListNode *prev = nullptr;
+        ListNode *cur = head;
+
+        while (cur)
+        {
+            ListNode *nextNode = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = nextNode;
+        }
+
+        head = prev;
+    }
+
+    std::unordered_map<std::wstring, int> build_diction()
+    {
+        Node* current = head;
+        std::unordered_map<std::wstring, int> diction;
+
+        while (current != nullptr)
+        {
+            diction[current->data]++;
+            current = current->next;
+        }
+
+        return diction;
+    }
+
     void clear()
     {
         ListNode<T>* cur = head;
-        while(head)
+        while (head)
         {
             ListNode<T>* temp = head->next;
             delete head;
@@ -197,10 +275,7 @@ public:
         }
     }
 
-    ~LinkedList()
-    {
-        clear();
-    }
+    ~LinkedList() { clear(); }
 };
 
 bool isChinesePunct(wchar_t ch)
@@ -258,4 +333,117 @@ ListNode<std::string>* load(const std::string& filename) {
     ListNode<std::string>* head = nullptr;
     split(text, head);
     return head;
+}
+
+int main(int argc, char *argv[])
+{
+    setlocale(LC_ALL, ""); // 设置本地化支持
+    LinkedList<std::wstring> *list;
+    input();
+    int k = 0;
+    while (k != -1)
+    {
+        std::wcout << L"1:打印当前字符串" << std::endl
+              << L"2:插入单词" << std::endl
+              << L"3:删除单词" << std::endl
+              << L"4:倒置当前字符串" << std::endl
+              << L"5:判断当前字符串是否是回文串" << std::endl
+              << L"6:计算字符串词数" << std::endl
+              << L"7:查找某个字符串是否存在" << std::endl
+              << L"8:销毁当前字符串" << std::endl
+              << L"9:生成词典" << std::endl
+              << L"10:重新输入字符串" << std::endl
+              << L"11:删除某个位置的多个单词" << std::endl
+              << L"-1:退出操作" << std::endl
+              << L"请选择你想进行的操作：" << std::endl;
+        while (!(std::wcin >> k))
+        {
+            std::wcin.clear(); // 清除错误输入
+            std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 忽略缓冲区中的多余字符
+            std::wcout << L"无效输入，请输入数字：" << std::endl;
+        }
+        std::wstring word;
+        int index;
+        std::unordered_map<std::wstring, int> diction;
+        switch (k)
+        {
+        case 1:
+            list->print();
+            break;
+
+        case 2:
+        {
+            std::wcout << L"请输入你要插入的单词" << std::endl;
+            std::wcin >> word;
+            std::wcout << L"请输入你要插入的位置索引" << std::endl;
+            std::wcin >> index;
+            list->insert(index, word);
+            break;
+        }
+
+        case 3:
+        {
+            std::wcout << L"请输入你要删除的单词的位置索引" << std::endl;
+            std::wcin >> index;
+            list->remove(index);
+            break;
+        }
+
+        case 4:
+        {
+            list->reverse();
+            std::wcout << L"已完成反转" << std::endl;
+            break;
+        }
+
+        case 5:
+        {
+            bool a = list->isSymmetry();
+            std::wcout << (a ? L"是回文串" : L"不是回文串") << std::endl;
+            break;
+        }
+
+        case 6:
+        {
+            int lenth = list->getLength();
+            std::wcout << lenth << std::endl;
+            break;
+        }
+
+        case 7:
+        {
+            std::wcout << L"请输入你要查找的词语：" << std::endl;
+            std::wcin >> word;
+            bool b = list->find(word);
+            std::wcout << (b ? L"存在" : L"不存在") << std::endl;
+            break;
+        }
+
+        case 8:
+        {
+            delete list;
+            std::wcout << L"销毁字符串请不要再对该字符串进行操作" << std::endl;
+            break;
+        }
+
+        case 9:
+        {
+            std::unordered_map<std::wstring, int> diction = list->build_diction();
+            for (auto it = diction.begin(); it != diction.end(); ++it)
+                std::wcout << it->first << L": " << it->second << std::endl;
+            break;
+        }
+        case 10:
+        {
+            input();
+            break;
+        }
+        case -1:
+            return 0;
+        default:
+            std::wcout << L"无效的选项，请重新选择。" << std::endl;
+            break;
+        }
+        std::wcout << std::endl;
+    }
 }
