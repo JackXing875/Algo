@@ -37,7 +37,6 @@ public:
     {
         this->clear();
         std::wstring text;
-        std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::wcout << L"请输入文本：" << std::endl;
         getline(std::wcin, text);
 
@@ -63,9 +62,10 @@ public:
         ListNode<T> *temp = head;
         while (temp)
         {
-            std::wcout << temp->val << std::endl;
+            std::wcout << temp->val << " ";
             temp = temp->next;
         }      
+        std::wcout << std::endl;
     }
 
     void create(const std::vector<T>& array)
@@ -321,9 +321,8 @@ int main(int argc, char *argv[])
     LinkedList<std::wstring> list;
     list.input();
     int k = 0;
-    while (k != -1)
-    {
-        std::wcout << L"1:打印当前字符串" << std::endl
+
+    std::wcout << L"1:打印当前字符串" << std::endl
               << L"2:插入单词" << std::endl
               << L"3:删除单词" << std::endl
               << L"4:倒置当前字符串" << std::endl
@@ -333,8 +332,11 @@ int main(int argc, char *argv[])
               << L"8:销毁当前字符串" << std::endl
               << L"9:生成词典" << std::endl
               << L"10:重新输入字符串" << std::endl
-              << L"-1:退出操作" << std::endl
-              << L"请选择你想进行的操作：" << std::endl;
+              << L"-1:退出操作" << std::endl;
+    
+    while (k != -1)
+    {
+        std::wcout << L"请选择你想进行的操作：" << std::endl;
         while (!(std::wcin >> k))
         {
             std::wcin.clear(); // 清除错误输入
@@ -354,9 +356,17 @@ int main(int argc, char *argv[])
         {
             std::wcout << L"请输入你要插入的单词" << std::endl;
             std::wcin >> word;
+            std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
             std::wcout << L"请输入你要插入的位置索引" << std::endl;
             std::wcin >> index;
-            list.insert(index, word);
+            std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+            try{
+                list.insert(index, word);
+            }              
+            catch (const std::out_of_range& e)
+            {
+                std::wcout << L"索引超出范围，请重新输入！" << std::endl;
+            }
             break;
         }
 
