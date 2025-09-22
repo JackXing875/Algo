@@ -1,6 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
+#include <fstream>
+#include <sstream>
+#include <cwchar>
+#include <limits>
 
 template <typename T>
 class ListNode
@@ -21,6 +25,13 @@ private:
 public:
     LinkedList() : head(nullptr) {}
 
+    void print(LinkedList<T> list)
+    {
+        ListNode<T> temp = head;
+        while (temp)
+            std::cout << temp->val << std::endl;
+    }
+
     void create(const std::vector<T>& array)
     {
         clear();
@@ -30,7 +41,7 @@ public:
             return ;
         }
 
-        head = new ListNode<datatype>(array[0]);
+        head = new ListNode<T>(array[0]);
         ListNode<T>* cur = head;
 
         for(size_t i = 1; i < array.size(); i++)
@@ -80,7 +91,7 @@ public:
         cur->next = new ListNode<T>(value);
     }
 
-    datatype get(size_t index) 
+    T get(size_t index) 
     {
         if(!head) throw std::out_of_range("Cannot get value in an empty list");
 
@@ -191,3 +202,60 @@ public:
         clear();
     }
 };
+
+bool isChinesePunct(wchar_t ch)
+{
+    std::wstring chinesePuncts = L"，。！？；：《》【】（）“”‘’";
+
+    return chinesePuncts.find(ch) != std::wstring::npos;
+}
+
+LinkedList<std::wstring> input()
+{
+    LinkedList<std::wstring> list;
+    std::wstring text;
+    std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::wcout << L"请输入文本：" << std::endl;
+    std::getline(std::wcin, text);
+
+    std::wstring word;
+    for (wchar_t ch : text)
+    {
+        if (iswpunct(ch) || iswspace(ch) || isChinesePunct(ch))
+            if (!word.empty())
+            {
+                list.append(word);
+                word.clear();
+            }
+        else word += ch;
+
+        if (!word.empty())
+            list.append(word);
+    }
+}
+
+void split(const std::string& text, ListNode<std::string> *head)
+{
+    std::string temp;
+    ListNode<std::string> *tail;
+
+
+}
+
+
+ListNode<std::string>* load(const std::string& filename) {
+    std::ifstream fin(filename);
+    if (!fin.is_open()) {
+        std::cerr << "无法打开文件: " << filename << std::endl;
+        return nullptr;
+    }
+    std::string line, text;
+    while (getline(fin, line)) {
+        text += line + " ";
+    }
+    fin.close();
+
+    ListNode<std::string>* head = nullptr;
+    split(text, head);
+    return head;
+}
