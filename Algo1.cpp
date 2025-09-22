@@ -30,22 +30,22 @@ public:
     {
         this->clear();
         std::wstring text;
-        std::wcin.ignore(numeric_limits<streamsize>::max(), '\n');
+        std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::wcout << L"请输入文本：" << std::endl;
-        std::getline(std::wcin, text);
+        getline(std::wcin, text);
 
         std::wstring word;
         for (wchar_t ch : text)
         {
             if (iswpunct(ch) || iswspace(ch) || isChinesePunct(ch))
+            {
                 if (!word.empty())
                 {
                     this->append(word);
                     word.clear();
                 }
-            else
-                word += ch;
-
+            }
+            else word += ch;
         }
         if (!word.empty())
             this->append(word);
@@ -245,6 +245,8 @@ public:
             fast = fast->next->next;
         }
 
+        if (fast) slow = slow->next;
+
         ListNode<T> *half = reverseList(slow);
         ListNode<T> *left = head, *right = half;
 
@@ -280,7 +282,7 @@ public:
     std::unordered_map<T, int> build_diction()
     {
         ListNode<T>* cur = head;
-        std::unordered_map<std::wstring, int> diction;
+        std::unordered_map<T, int> diction;
 
         while (cur != nullptr)
         {
