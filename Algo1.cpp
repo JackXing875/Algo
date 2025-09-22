@@ -26,9 +26,34 @@ private:
 public:
     LinkedList() : head(nullptr) {}
 
+    void input()
+    {
+        this->clear();
+        std::wstring text;
+        std::wcin.ignore(numeric_limits<streamsize>::max(), '\n');
+        std::wcout << L"请输入文本：" << std::endl;
+        std::getline(std::wcin, text);
+
+        std::wstring word;
+        for (wchar_t ch : text)
+        {
+            if (iswpunct(ch) || iswspace(ch) || isChinesePunct(ch))
+                if (!word.empty())
+                {
+                    this->append(word);
+                    word.clear();
+                }
+            else
+                word += ch;
+
+        }
+        if (!word.empty())
+            this->append(word);
+    }
+
     void print() const
     {
-        ListNode<T> temp = head;
+        ListNode<T> *temp = head;
         while (temp)
         {
             std::wcout << temp->val << std::endl;
@@ -194,14 +219,14 @@ public:
         return false;
     }
 
-    ListNode<T>* reverseList(ListNode<T>* head) 
+    ListNode<T>* reverseList(ListNode<T> *head) 
     {
-        ListNode *prev = nullptr;
-        ListNode *cur = head;
+        ListNode<T> *prev = nullptr;
+        ListNode<T> *cur = head;
 
         while (cur)
         {
-            ListNode *nextNode = cur->next;
+            ListNode<T> *nextNode = cur->next;
             cur->next = prev;
             prev = cur;
             cur = nextNode;
@@ -212,7 +237,7 @@ public:
 
     bool isSymmetry()
     {
-        ListNode *slow = head, *fast = head;
+        ListNode<T> *slow = head, *fast = head;
         
         while (fast && fast->next)
         {
@@ -220,8 +245,8 @@ public:
             fast = fast->next->next;
         }
 
-        ListNode* half = reverseList(slow);
-        ListNode *left = head, *right = half;
+        ListNode<T> *half = reverseList(slow);
+        ListNode<T> *left = head, *right = half;
 
         while (right)
         {
@@ -231,17 +256,19 @@ public:
             right = right->next;
         }
 
+        reverseList(half);
+
         return true;
     }
 
     void reverse() 
     {
-        ListNode *prev = nullptr;
-        ListNode *cur = head;
+        ListNode<T> *prev = nullptr;
+        ListNode<T> *cur = head;
 
         while (cur)
         {
-            ListNode *nextNode = cur->next;
+            ListNode<T> *nextNode = cur->next;
             cur->next = prev;
             prev = cur;
             cur = nextNode;
@@ -250,15 +277,15 @@ public:
         head = prev;
     }
 
-    std::unordered_map<std::wstring, int> build_diction()
+    std::unordered_map<T, int> build_diction()
     {
-        Node* current = head;
+        ListNode<T>* cur = head;
         std::unordered_map<std::wstring, int> diction;
 
-        while (current != nullptr)
+        while (cur != nullptr)
         {
-            diction[current->data]++;
-            current = current->next;
+            diction[cur->val]++;
+            cur = cur->next;
         }
 
         return diction;
@@ -285,61 +312,12 @@ bool isChinesePunct(wchar_t ch)
     return chinesePuncts.find(ch) != std::wstring::npos;
 }
 
-LinkedList<std::wstring> input()
-{
-    LinkedList<std::wstring> list;
-    std::wstring text;
-    std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::wcout << L"请输入文本：" << std::endl;
-    std::getline(std::wcin, text);
-
-    std::wstring word;
-    for (wchar_t ch : text)
-    {
-        if (iswpunct(ch) || iswspace(ch) || isChinesePunct(ch))
-            if (!word.empty())
-            {
-                list.append(word);
-                word.clear();
-            }
-        else word += ch;
-
-        if (!word.empty())
-            list.append(word);
-    }
-}
-
-void split(const std::string& text, ListNode<std::string> *head)
-{
-    std::string temp;
-    ListNode<std::string> *tail;
-
-
-}
-
-
-ListNode<std::string>* load(const std::string& filename) {
-    std::ifstream fin(filename);
-    if (!fin.is_open()) {
-        std::cerr << "无法打开文件: " << filename << std::endl;
-        return nullptr;
-    }
-    std::string line, text;
-    while (getline(fin, line)) {
-        text += line + " ";
-    }
-    fin.close();
-
-    ListNode<std::string>* head = nullptr;
-    split(text, head);
-    return head;
-}
 
 int main(int argc, char *argv[])
 {
     setlocale(LC_ALL, ""); // 设置本地化支持
-    LinkedList<std::wstring> *list;
-    input();
+    LinkedList<std::wstring> list;
+    list.input();
     int k = 0;
     while (k != -1)
     {
@@ -353,7 +331,6 @@ int main(int argc, char *argv[])
               << L"8:销毁当前字符串" << std::endl
               << L"9:生成词典" << std::endl
               << L"10:重新输入字符串" << std::endl
-              << L"11:删除某个位置的多个单词" << std::endl
               << L"-1:退出操作" << std::endl
               << L"请选择你想进行的操作：" << std::endl;
         while (!(std::wcin >> k))
@@ -368,7 +345,7 @@ int main(int argc, char *argv[])
         switch (k)
         {
         case 1:
-            list->print();
+            list.print();
             break;
 
         case 2:
@@ -377,7 +354,7 @@ int main(int argc, char *argv[])
             std::wcin >> word;
             std::wcout << L"请输入你要插入的位置索引" << std::endl;
             std::wcin >> index;
-            list->insert(index, word);
+            list.insert(index, word);
             break;
         }
 
@@ -385,27 +362,27 @@ int main(int argc, char *argv[])
         {
             std::wcout << L"请输入你要删除的单词的位置索引" << std::endl;
             std::wcin >> index;
-            list->remove(index);
+            list.remove(index);
             break;
         }
 
         case 4:
         {
-            list->reverse();
+            list.reverse();
             std::wcout << L"已完成反转" << std::endl;
             break;
         }
 
         case 5:
         {
-            bool a = list->isSymmetry();
+            bool a = list.isSymmetry();
             std::wcout << (a ? L"是回文串" : L"不是回文串") << std::endl;
             break;
         }
 
         case 6:
         {
-            int lenth = list->getLength();
+            int lenth = list.getLength();
             std::wcout << lenth << std::endl;
             break;
         }
@@ -414,28 +391,28 @@ int main(int argc, char *argv[])
         {
             std::wcout << L"请输入你要查找的词语：" << std::endl;
             std::wcin >> word;
-            bool b = list->find(word);
+            bool b = list.find(word);
             std::wcout << (b ? L"存在" : L"不存在") << std::endl;
             break;
         }
 
         case 8:
         {
-            delete list;
+            list.clear();
             std::wcout << L"销毁字符串请不要再对该字符串进行操作" << std::endl;
             break;
         }
 
         case 9:
         {
-            std::unordered_map<std::wstring, int> diction = list->build_diction();
+            std::unordered_map<std::wstring, int> diction = list.build_diction();
             for (auto it = diction.begin(); it != diction.end(); ++it)
                 std::wcout << it->first << L": " << it->second << std::endl;
             break;
         }
         case 10:
         {
-            input();
+            list.input();
             break;
         }
         case -1:
