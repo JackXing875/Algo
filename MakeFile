@@ -1,0 +1,23 @@
+# 编译器与参数
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -O2
+
+# 自动收集当前目录下所有 .cpp 文件
+SRCS := $(wildcard *.cpp)
+TARGETS := $(SRCS:.cpp=)
+
+# 默认目标：编译所有文件
+all: $(TARGETS)
+
+# 通用规则：把每个 .cpp 文件编译成同名可执行文件
+%: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $<
+
+# 运行某个文件：用法 make run-文件名（不带.cpp）
+# 例子：make run-temp   会编译 temp.cpp 并运行 ./temp
+run-%: %
+	./$<
+
+# 清理所有生成文件
+clean:
+	rm -f $(TARGETS) *.o
