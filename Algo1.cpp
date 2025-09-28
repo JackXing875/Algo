@@ -226,6 +226,36 @@ public:
         return false;
     }
 
+    bool findSeq(const std::vector<T>& query)
+    {
+        if (query.empty()) return false;
+
+        ListNode<T> *temp = head;
+
+        while (temp)
+        {
+            if (temp->val == query[0])
+            {
+                ListNode<T> *cur = temp;
+                bool flag = true;
+                for (size_t i = 0; i < query.size(); i++)
+                {
+                    if (!cur || cur->val != query[i])
+                    {
+                        flag = false;
+                        break;
+                    }
+                    cur = cur->next;
+                }
+
+                if (flag) return true;
+            }
+            temp = temp->next;
+        }
+
+        return false;
+    }
+
     ListNode<T>* reverseList(ListNode<T> *head) 
     {
         ListNode<T> *prev = nullptr;
