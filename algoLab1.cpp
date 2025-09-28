@@ -7,6 +7,7 @@
 #include <limits>
 #include <unordered_map>
 
+//判断是否是中文标点符号（分隔符）
 bool isChinesePunct(wchar_t ch)
 {
     std::wstring chinesePuncts = L"，。！？；：《》【】（）“”‘’";
@@ -14,6 +15,7 @@ bool isChinesePunct(wchar_t ch)
     return chinesePuncts.find(ch) != std::wstring::npos;
 }
 
+//节点类
 template <typename T>
 class ListNode
 {
@@ -24,6 +26,7 @@ public:
     ListNode(T x) : val(x), next(nullptr) {}; 
 };
 
+//单链表类
 template <typename T>
 class LinkedList
 {
@@ -36,14 +39,14 @@ public:
     void input()
     {
         this->clear();
-        std::wstring text;
+        std::wstring text;   //wstring防止中文被拆碎
         std::wcout << L"请输入文本：" << std::endl;
         getline(std::wcin, text);
 
         std::wstring word;
         for (wchar_t ch : text)
         {
-            if (iswpunct(ch) || iswspace(ch) || isChinesePunct(ch))
+            if (iswpunct(ch) || iswspace(ch) || isChinesePunct(ch)) //如果是标点符号，就把词加入链表，并清空临时容器word
             {
                 if (!word.empty())
                 {
@@ -51,13 +54,13 @@ public:
                     word.clear();
                 }
             }
-            else word += ch;
+            else word += ch; //如果不是标点，那就是当前词的一部分，加入当前词
         }
         if (!word.empty())
             this->append(word);
     }
 
-    void print() const
+    void print() const //打印当前链表
     {
         ListNode<T> *temp = head;
         while (temp)
@@ -68,7 +71,7 @@ public:
         std::wcout << std::endl;
     }
 
-    void create(const std::vector<T>& array)
+    void create(const std::vector<T>& array) //由 std::vector 生成链表
     {
         clear();
         if (array.empty()) 
@@ -87,9 +90,9 @@ public:
         }
     }
 
-    bool isEmpty() const { return !head; }
+    bool isEmpty() const { return !head; } //判断链表是否为空
 
-    size_t getLength() const
+    size_t getLength() const //获取链表长度
     {
         ListNode<T>* cur = head;
         size_t length = 0;
@@ -103,7 +106,7 @@ public:
         return length;
     }
 
-    void append(T value)
+    void append(T value)  //在链表末尾增加节点
     {
         if (!head)
         {
@@ -117,7 +120,7 @@ public:
         cur->next = new ListNode<T>(value);
     }
 
-    T get(size_t index) 
+    T get(size_t index) //获取索引为 index 处的节点的值
     {
         if (!head) throw std::out_of_range("Cannot get value in an empty list");
 
@@ -136,7 +139,7 @@ public:
         return cur->val;
     }
 
-    void set(size_t index, T value)
+    void set(size_t index, T value) //更改索引为 index 处的节点的值为 value
     {
         if (!head) throw std::out_of_range("Empty list");
 
@@ -155,7 +158,7 @@ public:
         cur->val = value;
     }
 
-    void insert(size_t index, T value)
+    void insert(size_t index, T value) //在索引为index处插入值为 value 的节点
     {
         if (index == 0)
         {
@@ -183,7 +186,7 @@ public:
         cur->next->next = temp;
     }
 
-    void remove(size_t index) 
+    void remove(size_t index) //删除索引为 index 处的节点
     {
         if (!head)
             throw std::out_of_range("Cannot remove from an empty list");
@@ -212,7 +215,7 @@ public:
         delete toDelete;
     }
 
-    bool find(T value)
+    bool find(T value) //查找链表中是否包含值为 value 的节点
     {
         ListNode<T> *temp = head;
 
@@ -226,7 +229,7 @@ public:
         return false;
     }
 
-    bool findSeq(const std::vector<T>& query)
+    bool findSeq(const std::vector<T>& query) //多个值匹配
     {
         if (query.empty()) return false;
 
@@ -256,7 +259,7 @@ public:
         return false;
     }
 
-    ListNode<T>* reverseList(ListNode<T> *head) 
+    ListNode<T>* reverseList(ListNode<T> *head) //反转链表， 并返回新的头节点（仅作为工具函数来实现判断回文函数）
     {
         ListNode<T> *prev = nullptr;
         ListNode<T> *cur = head;
@@ -272,11 +275,11 @@ public:
         return prev;
     }
 
-    bool isSymmetry()
+    bool isSymmetry() //判断链表是否为回文链表
     {
         ListNode<T> *slow = head, *fast = head;
         
-        while (fast && fast->next)
+        while (fast && fast->next) //找到中间的节点
         {
             slow = slow->next;
             fast = fast->next->next;
@@ -284,23 +287,23 @@ public:
 
         if (fast) slow = slow->next;
 
-        ListNode<T> *half = reverseList(slow);
+        ListNode<T> *half = reverseList(slow); //反转链表的后半部分
         ListNode<T> *left = head, *right = half;
 
-        while (right)
+        while (right) //前后两部分一一比对，判断是否相同
         {
             if(left->val != right->val)
                 return false;
             left = left->next;
             right = right->next;
-        }
+        } 
 
-        reverseList(half);
+        reverseList(half); //反转后半部分， 复原链表
 
         return true;
     }
 
-    void reverse() 
+    void reverse() //反转链表
     {
         ListNode<T> *prev = nullptr;
         ListNode<T> *cur = head;
@@ -316,7 +319,7 @@ public:
         head = prev;
     }
 
-    std::unordered_map<T, int> build_diction()
+    std::unordered_map<T, int> buildDiction() //建立字典
     {
         ListNode<T>* cur = head;
         std::unordered_map<T, int> diction;
@@ -330,7 +333,7 @@ public:
         return diction;
     }
 
-    void clear()
+    void clear() //清空链表
     {
         ListNode<T>* cur = head;
         while (head)
@@ -352,16 +355,16 @@ int main(int argc, char *argv[])
     list.input();
     int k = 0;
 
-    std::wcout << L"1:打印当前字符串" << std::endl
-              << L"2:插入单词" << std::endl
-              << L"3:删除单词" << std::endl
+    std::wcout << L"1:输出当前内容" << std::endl
+              << L"2:插入词" << std::endl
+              << L"3:删除词" << std::endl
               << L"4:倒置当前字符串" << std::endl
               << L"5:判断当前字符串是否是回文串" << std::endl
-              << L"6:计算字符串词数" << std::endl
+              << L"6:计算当前词数" << std::endl
               << L"7:查找某个字符串是否存在" << std::endl
               << L"8:销毁当前字符串" << std::endl
               << L"9:生成词典" << std::endl
-              << L"10:重新输入字符串" << std::endl
+              << L"10:重新输入" << std::endl
               << L"-1:退出操作" << std::endl;
     
     while (k != -1)
@@ -369,7 +372,7 @@ int main(int argc, char *argv[])
         std::wcout << L"请选择你想进行的操作：" << std::endl;
         while (!(std::wcin >> k))
         {
-            std::wcin.clear(); // 清除错误输入
+            std::wcin.clear(); 
             std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // 忽略缓冲区中的多余字符
             std::wcout << L"无效输入，请输入数字：" << std::endl;
         }
@@ -384,7 +387,7 @@ int main(int argc, char *argv[])
 
         case 2:
         {
-            std::wcout << L"请输入你要插入的单词" << std::endl;
+            std::wcout << L"请输入你要插入的词" << std::endl;
             std::wcin >> word;
             std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
             std::wcout << L"请输入你要插入的位置索引" << std::endl;
@@ -402,7 +405,7 @@ int main(int argc, char *argv[])
 
         case 3:
         {
-            std::wcout << L"请输入你要删除的单词的位置索引" << std::endl;
+            std::wcout << L"请输入你要删除的词的位置索引" << std::endl;
             std::wcin >> index;
             list.remove(index);
             break;
@@ -432,11 +435,25 @@ int main(int argc, char *argv[])
         case 7:
         {
             std::wcout << L"请输入你要查找的词语：" << std::endl;
-            std::wcin >> word;
-            bool b = list.find(word);
+
+            std::wstring line;
+            std::vector<std::wstring> words;
+
+            // 忽略掉上一次输入后残留的换行
+            std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');
+            std::getline(std::wcin, line);
+
+            std::wistringstream iss(line);
+            std::wstring word;
+            while (iss >> word) {
+                words.push_back(word);
+            }
+
+            bool b = list.findSeq(words); 
             std::wcout << (b ? L"存在" : L"不存在") << std::endl;
             break;
         }
+
 
         case 8:
         {
@@ -447,12 +464,12 @@ int main(int argc, char *argv[])
 
         case 9:
         {
-            std::unordered_map<std::wstring, int> diction = list.build_diction();
+            std::unordered_map<std::wstring, int> diction = list.buildDiction();
             for (auto it = diction.begin(); it != diction.end(); ++it)
                 std::wcout << it->first << L": " << it->second << std::endl;
             break;
         }
-        case 10:
+        case 11:
         {
             list.input();
             break;
