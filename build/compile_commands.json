@@ -1,0 +1,152 @@
+[
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/DFS.dir/src/DFS.cpp.o -c /home/schrieffer/Algo/src/DFS.cpp",
+  "file": "/home/schrieffer/Algo/src/DFS.cpp",
+  "output": "CMakeFiles/DFS.dir/src/DFS.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algoLab1.dir/src/algoLab1.cpp.o -c /home/schrieffer/Algo/src/algoLab1.cpp",
+  "file": "/home/schrieffer/Algo/src/algoLab1.cpp",
+  "output": "CMakeFiles/algoLab1.dir/src/algoLab1.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/mergeSort.dir/src/mergeSort.cpp.o -c /home/schrieffer/Algo/src/mergeSort.cpp",
+  "file": "/home/schrieffer/Algo/src/mergeSort.cpp",
+  "output": "CMakeFiles/mergeSort.dir/src/mergeSort.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/quickSort.dir/src/quickSort.cpp.o -c /home/schrieffer/Algo/src/quickSort.cpp",
+  "file": "/home/schrieffer/Algo/src/quickSort.cpp",
+  "output": "CMakeFiles/quickSort.dir/src/quickSort.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/selectionSort.dir/src/selectionSort.cpp.o -c /home/schrieffer/Algo/src/selectionSort.cpp",
+  "file": "/home/schrieffer/Algo/src/selectionSort.cpp",
+  "output": "CMakeFiles/selectionSort.dir/src/selectionSort.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/1.twoSum.cpp.o -c /home/schrieffer/Algo/src/1.twoSum.cpp",
+  "file": "/home/schrieffer/Algo/src/1.twoSum.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/1.twoSum.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/11.maxArea.cpp.o -c /home/schrieffer/Algo/src/11.maxArea.cpp",
+  "file": "/home/schrieffer/Algo/src/11.maxArea.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/11.maxArea.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/128.longestConsecutive.cpp.o -c /home/schrieffer/Algo/src/128.longestConsecutive.cpp",
+  "file": "/home/schrieffer/Algo/src/128.longestConsecutive.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/128.longestConsecutive.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/15.threeSum.cpp.o -c /home/schrieffer/Algo/src/15.threeSum.cpp",
+  "file": "/home/schrieffer/Algo/src/15.threeSum.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/15.threeSum.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/283.moveZeroes.cpp.o -c /home/schrieffer/Algo/src/283.moveZeroes.cpp",
+  "file": "/home/schrieffer/Algo/src/283.moveZeroes.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/283.moveZeroes.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/3.lengthOfLongestSubstring.cpp.o -c /home/schrieffer/Algo/src/3.lengthOfLongestSubstring.cpp",
+  "file": "/home/schrieffer/Algo/src/3.lengthOfLongestSubstring.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/3.lengthOfLongestSubstring.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/42.trap.cpp.o -c /home/schrieffer/Algo/src/42.trap.cpp",
+  "file": "/home/schrieffer/Algo/src/42.trap.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/42.trap.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/49.groupAnagrams.cpp.o -c /home/schrieffer/Algo/src/49.groupAnagrams.cpp",
+  "file": "/home/schrieffer/Algo/src/49.groupAnagrams.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/49.groupAnagrams.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/AVLTree.cpp.o -c /home/schrieffer/Algo/src/AVLTree.cpp",
+  "file": "/home/schrieffer/Algo/src/AVLTree.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/AVLTree.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/Array.cpp.o -c /home/schrieffer/Algo/src/Array.cpp",
+  "file": "/home/schrieffer/Algo/src/Array.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/Array.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/ArrayList.cpp.o -c /home/schrieffer/Algo/src/ArrayList.cpp",
+  "file": "/home/schrieffer/Algo/src/ArrayList.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/ArrayList.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/BST.cpp.o -c /home/schrieffer/Algo/src/BST.cpp",
+  "file": "/home/schrieffer/Algo/src/BST.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/BST.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/Dijkstra.cpp.o -c /home/schrieffer/Algo/src/Dijkstra.cpp",
+  "file": "/home/schrieffer/Algo/src/Dijkstra.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/Dijkstra.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/HashTable.cpp.o -c /home/schrieffer/Algo/src/HashTable.cpp",
+  "file": "/home/schrieffer/Algo/src/HashTable.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/HashTable.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/LinkedList.cpp.o -c /home/schrieffer/Algo/src/LinkedList.cpp",
+  "file": "/home/schrieffer/Algo/src/LinkedList.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/LinkedList.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/List.cpp.o -c /home/schrieffer/Algo/src/List.cpp",
+  "file": "/home/schrieffer/Algo/src/List.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/List.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/SeqList.cpp.o -c /home/schrieffer/Algo/src/SeqList.cpp",
+  "file": "/home/schrieffer/Algo/src/SeqList.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/SeqList.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/UnionFind.cpp.o -c /home/schrieffer/Algo/src/UnionFind.cpp",
+  "file": "/home/schrieffer/Algo/src/UnionFind.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/UnionFind.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/queue.cpp.o -c /home/schrieffer/Algo/src/queue.cpp",
+  "file": "/home/schrieffer/Algo/src/queue.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/queue.cpp.o"
+},
+{
+  "directory": "/home/schrieffer/Algo/build",
+  "command": "/usr/bin/c++ -I/home/schrieffer/Algo/include -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wpedantic -Wshadow -Werror=vla -Wconversion -Wsign-conversion -fno-rtti -fno-exceptions -fvisibility=hidden -g -O2 -o CMakeFiles/algo_core.dir/src/stack.cpp.o -c /home/schrieffer/Algo/src/stack.cpp",
+  "file": "/home/schrieffer/Algo/src/stack.cpp",
+  "output": "CMakeFiles/algo_core.dir/src/stack.cpp.o"
+}
+]
