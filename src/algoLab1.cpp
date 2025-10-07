@@ -1,4 +1,3 @@
-// == 完整的改进部分（可直接替换你的文件） ==
 #include <iostream>
 #include <vector>
 #include <stdexcept>
@@ -7,108 +6,13 @@
 #include <cwchar>
 #include <limits>
 #include <unordered_map>
-#include <io.h>
-#include <fcntl.h>
-#include <codecvt>
-#include <locale>
-#include <windows.h>
 
-// 判断是否是中文标点符号（分隔符）
+//判断是否是中文标点符号（分隔符）
 bool isChinesePunct(wchar_t ch)
 {
     std::wstring chinesePuncts = L"，。！？；：《》【】（）“”‘’";
+
     return chinesePuncts.find(ch) != std::wstring::npos;
-}
-
-// wstring (UTF-16) -> UTF-8 std::string
-std::string wstringToUTF8(const std::wstring& wstr) {
-    if (wstr.empty()) return {};
-    int size_needed = WideCharToMultiByte(CP_UTF8, 0, wstr.data(), (int)wstr.size(),
-                                          nullptr, 0, nullptr, nullptr);
-    std::string str(size_needed, 0);
-    WideCharToMultiByte(CP_UTF8, 0, wstr.data(), (int)wstr.size(),
-                        &str[0], size_needed, nullptr, nullptr);
-    return str;
-}
-
-// multibyte (given codepage) -> wstring
-std::wstring multiByteToWString(const std::string& s, UINT codepage) {
-    if (s.empty()) return {};
-    int len = MultiByteToWideChar(codepage, 0, s.data(), (int)s.size(), nullptr, 0);
-    if (len == 0) return {};
-    std::wstring w(len, 0);
-    MultiByteToWideChar(codepage, 0, s.data(), (int)s.size(), &w[0], len);
-    return w;
-}
-
-// 简单检测是否为合法 UTF-8（用于没有 BOM 时判断）
-bool isValidUTF8(const std::string& s) {
-    const unsigned char *bytes = (const unsigned char*)s.c_str();
-    size_t len = s.size();
-    size_t i = 0;
-    while (i < len) {
-        unsigned char c = bytes[i];
-        if ((c & 0x80) == 0) { // 0xxxxxxx
-            i += 1;
-        } else if ((c & 0xE0) == 0xC0) { // 110xxxxx 10xxxxxx
-            if (i+1 >= len) return false;
-            if ((bytes[i+1] & 0xC0) != 0x80) return false;
-            i += 2;
-        } else if ((c & 0xF0) == 0xE0) { // 1110xxxx 10xxxxxx 10xxxxxx
-            if (i+2 >= len) return false;
-            if ((bytes[i+1] & 0xC0) != 0x80 || (bytes[i+2] & 0xC0) != 0x80) return false;
-            i += 3;
-        } else if ((c & 0xF8) == 0xF0) { // 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
-            if (i+3 >= len) return false;
-            if ((bytes[i+1] & 0xC0) != 0x80 || (bytes[i+2] & 0xC0) != 0x80 || (bytes[i+3] & 0xC0) != 0x80) return false;
-            i += 4;
-        } else return false;
-    }
-    return true;
-}
-
-// 读取文件字节 -> 转为 std::wstring（自动检测 UTF-8 / UTF-16 LE / ANSI）
-std::wstring readFileToWString(const std::wstring& wfilename) {
-    std::string fname = wstringToUTF8(wfilename); // 用 UTF-8 名称打开文件（在 MinGW 下更可靠）
-    std::ifstream fin(fname, std::ios::binary);
-    if (!fin.is_open()) {
-        return L""; // caller 处理错误
-    }
-
-    // 读取所有字节
-    std::string content((std::istreambuf_iterator<char>(fin)), std::istreambuf_iterator<char>());
-    fin.close();
-
-    if (content.empty()) return L"";
-
-    // 检测 BOM 或编码
-    // UTF-8 BOM: EF BB BF
-    if (content.size() >= 3 &&
-        (unsigned char)content[0] == 0xEF &&
-        (unsigned char)content[1] == 0xBB &&
-        (unsigned char)content[2] == 0xBF) {
-        std::string noBom = content.substr(3);
-        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
-        return conv.from_bytes(noBom);
-    }
-
-    // UTF-16 LE BOM: FF FE
-    if (content.size() >= 2 &&
-        (unsigned char)content[0] == 0xFF &&
-        (unsigned char)content[1] == 0xFE) {
-        // 使用 codecvt_utf16 (little endian)
-        std::wstring_convert<std::codecvt_utf16<wchar_t, 0x10ffff, std::little_endian>, wchar_t> conv16;
-        return conv16.from_bytes(content);
-    }
-
-    // 没有 BOM，先试 UTF-8 验证
-    if (isValidUTF8(content)) {
-        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
-        return conv.from_bytes(content);
-    }
-
-    // 兜底：按系统 ANSI（CP_ACP）解码（通常是 GBK 在中文 Windows）
-    return multiByteToWString(content, CP_ACP);
 }
 
 //节点类
@@ -134,7 +38,7 @@ public:
 
     void input()
     {
-        clear();
+        this->clear();
         std::wstring text;   //wstring防止中文被拆碎
         std::wcout << L"请输入文本：" << std::endl;
         getline(std::wcin, text);
@@ -146,13 +50,14 @@ public:
             {
                 if (!word.empty())
                 {
-                    append(word);
+                    this->append(word);
                     word.clear();
                 }
             }
             else word += ch; //如果不是标点，那就是当前词的一部分，加入当前词
         }
-        if (!word.empty()) append(word);
+        if (!word.empty())
+            this->append(word);
     }
 
     void print() const //打印当前链表
@@ -439,65 +344,16 @@ public:
         }
     }
 
-    void inputFromFile(const std::wstring &filename)
-    {
-        clear();
-
-        std::wstring text = readFileToWString(filename);
-        if (text.empty()) {
-            std::wcerr << L"无法读取文件或文件为空: " << filename << std::endl;
-            return;
-        }
-
-        std::wstring word;
-        for (wchar_t ch : text) {
-            if (iswpunct(ch) || iswspace(ch) || isChinesePunct(ch)) {
-                if (!word.empty()) {
-                    append(word);
-                    word.clear();
-                }
-            } else {
-                word += ch;
-            }
-        }
-        if (!word.empty()) append(word);
-
-        std::wcout << L"文件读取并分词完成 ✅" << std::endl;
-    }
-
-
     ~LinkedList() { clear(); }
 };
 
 
-
-
 int main(int argc, char *argv[])
 {
-    _setmode(_fileno(stdout), _O_U16TEXT);
-    _setmode(_fileno(stdin), _O_U16TEXT);
     setlocale(LC_ALL, ""); // 设置本地化支持
-
     LinkedList<std::wstring> list;
-    std::wcout << L"====== 字符串操作 ======" << std::endl;
-    std::wcout << L"操作 a.在终端输入文本 b.从文件读取文本" << std::endl;
-
-    std::wstring choice;
-    std::getline(std::wcin, choice); // 用 wcin 读
-
-    if (choice == L"a" || choice == L"A") {
-        list.input();
-    } else if (choice == L"b" || choice == L"B") {
-        std::wcout << L"请输入文件路径：" << std::endl;
-        std::wstring filepath;
-        std::wcin >> filepath;
-        list.inputFromFile(filepath);
-    } else {
-        std::wcout << L"无效输入" << std::endl;
-    }
-
+    list.input();
     int k = 0;
-
 
     std::wcout << L"1:输出当前内容" << std::endl
               << L"2:插入词" << std::endl
@@ -508,6 +364,7 @@ int main(int argc, char *argv[])
               << L"7:查找某个字符串是否存在" << std::endl
               << L"8:销毁当前字符串" << std::endl
               << L"9:生成词典" << std::endl
+              << L"10:重新输入" << std::endl
               << L"-1:退出操作" << std::endl;
     
     while (k != -1)
@@ -557,8 +414,7 @@ int main(int argc, char *argv[])
         case 4:
         {
             list.reverse();
-            std::wcout << L"已完成反转，反转后的文本为：" << std::endl;
-            list.print();
+            std::wcout << L"已完成反转" << std::endl;
             break;
         }
 
@@ -583,7 +439,9 @@ int main(int argc, char *argv[])
             std::wstring line;
             std::vector<std::wstring> words;
 
-            std::getline(std::wcin >> std::ws, line);
+            // 忽略掉上一次输入后残留的换行
+            std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), L'\n');
+            std::getline(std::wcin, line);
 
             std::wistringstream iss(line);
             std::wstring word;
@@ -600,7 +458,7 @@ int main(int argc, char *argv[])
         case 8:
         {
             list.clear();
-            std::wcout << L"该文本已被销毁" << std::endl;
+            std::wcout << L"销毁字符串请不要再对该字符串进行操作" << std::endl;
             break;
         }
 
@@ -611,10 +469,15 @@ int main(int argc, char *argv[])
                 std::wcout << it->first << L": " << it->second << std::endl;
             break;
         }
+        case 11:
+        {
+            list.input();
+            break;
+        }
         case -1:
             return 0;
         default:
-            std::wcout << L"ERROR:选项无效。" << std::endl;
+            std::wcout << L"无效的选项，请重新选择。" << std::endl;
             break;
         }
         std::wcout << std::endl;

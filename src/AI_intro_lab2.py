@@ -133,10 +133,13 @@ def main():
     # 初始化空棋盘
     board = [Open_token for i in range(9)]
 
+    flag = True
     # 开始下棋
     while legal_move_left(board) and winner(board) == Open_token:
-        print()
-        print_board(board)
+        if not flag:
+            print()
+            print_board(board)
+        flag = False
         if next_move == HUMAN and legal_move_left(board):
             try:
                 print("\n")

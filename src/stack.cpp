@@ -15,7 +15,7 @@ public:
     datatype pop()
     {
         if(isEmpty()) 
-            throw std::out_of_range("Stack is empty")
+            throw std::out_of_range("Stack is empty");
         
         datatype topElement = array.back();
         array.pop_back();
@@ -25,7 +25,7 @@ public:
     datatype top() 
     {
         if(isEmpty()) 
-            throw std::out_of_range("Stack is empty")
+            throw std::out_of_range("Stack is empty");
 
         return array.back();
     }

@@ -1,6 +1,8 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
+#include <stdexcept>
+
 
 template <typename datatype>
 class TreeNode
