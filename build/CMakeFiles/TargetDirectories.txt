@@ -3,5 +3,6 @@
 /home/schrieffer/Algo/build/CMakeFiles/mergeSort.dir
 /home/schrieffer/Algo/build/CMakeFiles/quickSort.dir
 /home/schrieffer/Algo/build/CMakeFiles/selectionSort.dir
+/home/schrieffer/Algo/build/CMakeFiles/test.dir
 /home/schrieffer/Algo/build/CMakeFiles/edit_cache.dir
 /home/schrieffer/Algo/build/CMakeFiles/rebuild_cache.dir

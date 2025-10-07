@@ -47,6 +47,7 @@ build cmake_object_order_depends_target_DFS: phony || CMakeFiles/DFS.dir
 build CMakeFiles/DFS.dir/src/DFS.cpp.o: CXX_COMPILER__DFS_unscanned_ /home/schrieffer/Algo/src/DFS.cpp || cmake_object_order_depends_target_DFS
   DEP_FILE = CMakeFiles/DFS.dir/src/DFS.cpp.o.d
   FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
   LAUNCHER = ccache 
   OBJECT_DIR = CMakeFiles/DFS.dir
   OBJECT_FILE_DIR = CMakeFiles/DFS.dir/src
@@ -78,6 +79,7 @@ build cmake_object_order_depends_target_algoLab1: phony || CMakeFiles/algoLab1.d
 build CMakeFiles/algoLab1.dir/src/algoLab1.cpp.o: CXX_COMPILER__algoLab1_unscanned_ /home/schrieffer/Algo/src/algoLab1.cpp || cmake_object_order_depends_target_algoLab1
   DEP_FILE = CMakeFiles/algoLab1.dir/src/algoLab1.cpp.o.d
   FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
   LAUNCHER = ccache 
   OBJECT_DIR = CMakeFiles/algoLab1.dir
   OBJECT_FILE_DIR = CMakeFiles/algoLab1.dir/src
@@ -109,6 +111,7 @@ build cmake_object_order_depends_target_mergeSort: phony || CMakeFiles/mergeSort
 build CMakeFiles/mergeSort.dir/src/mergeSort.cpp.o: CXX_COMPILER__mergeSort_unscanned_ /home/schrieffer/Algo/src/mergeSort.cpp || cmake_object_order_depends_target_mergeSort
   DEP_FILE = CMakeFiles/mergeSort.dir/src/mergeSort.cpp.o.d
   FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
   LAUNCHER = ccache 
   OBJECT_DIR = CMakeFiles/mergeSort.dir
   OBJECT_FILE_DIR = CMakeFiles/mergeSort.dir/src
@@ -140,6 +143,7 @@ build cmake_object_order_depends_target_quickSort: phony || CMakeFiles/quickSort
 build CMakeFiles/quickSort.dir/src/quickSort.cpp.o: CXX_COMPILER__quickSort_unscanned_ /home/schrieffer/Algo/src/quickSort.cpp || cmake_object_order_depends_target_quickSort
   DEP_FILE = CMakeFiles/quickSort.dir/src/quickSort.cpp.o.d
   FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
   LAUNCHER = ccache 
   OBJECT_DIR = CMakeFiles/quickSort.dir
   OBJECT_FILE_DIR = CMakeFiles/quickSort.dir/src
@@ -171,6 +175,7 @@ build cmake_object_order_depends_target_selectionSort: phony || CMakeFiles/selec
 build CMakeFiles/selectionSort.dir/src/selectionSort.cpp.o: CXX_COMPILER__selectionSort_unscanned_ /home/schrieffer/Algo/src/selectionSort.cpp || cmake_object_order_depends_target_selectionSort
   DEP_FILE = CMakeFiles/selectionSort.dir/src/selectionSort.cpp.o.d
   FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
   LAUNCHER = ccache 
   OBJECT_DIR = CMakeFiles/selectionSort.dir
   OBJECT_FILE_DIR = CMakeFiles/selectionSort.dir/src
@@ -189,6 +194,38 @@ build selectionSort: CXX_EXECUTABLE_LINKER__selectionSort_ CMakeFiles/selectionS
   PRE_LINK = :
   TARGET_FILE = selectionSort
   TARGET_PDB = selectionSort.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target test
+
+
+#############################################
+# Order-only phony target for test
+
+build cmake_object_order_depends_target_test: phony || CMakeFiles/test.dir
+
+build CMakeFiles/test.dir/src/test.cpp.o: CXX_COMPILER__test_unscanned_ /home/schrieffer/Algo/src/test.cpp || cmake_object_order_depends_target_test
+  DEP_FILE = CMakeFiles/test.dir/src/test.cpp.o.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
+  LAUNCHER = ccache 
+  OBJECT_DIR = CMakeFiles/test.dir
+  OBJECT_FILE_DIR = CMakeFiles/test.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target test
+
+
+#############################################
+# Link the executable test
+
+build test: CXX_EXECUTABLE_LINKER__test_ CMakeFiles/test.dir/src/test.cpp.o
+  OBJECT_DIR = CMakeFiles/test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = test
+  TARGET_PDB = test.dbg
 
 
 #############################################
@@ -224,7 +261,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/schrieffer/Algo/build
 
-build all: phony DFS algoLab1 mergeSort quickSort selectionSort
+build all: phony DFS algoLab1 mergeSort quickSort selectionSort test
 
 # =============================================================================
 # Built-in targets

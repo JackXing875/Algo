@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(GLOB SRC_LIST "src/*.cpp")
 
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
 foreach(src_file ${SRC_LIST})
     file(READ ${src_file} file_content)
     if(file_content MATCHES "int[ \t]+main[ \t]*\\(")
