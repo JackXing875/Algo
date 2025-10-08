@@ -1,15 +1,16 @@
 #!/bin/bash
+set -e
 
 BUILD_DIR="build"
 
+# 若没有构建目录或构建文件，则重新生成
 if [ ! -d "$BUILD_DIR" ] || [ ! -f "$BUILD_DIR/build.ninja" ]; then
-    echo "GENERATING NINJA BUILD FILES..."
-    cmake -B "$BUILD_DIR" -S .
+    echo "Generating build files..."
+    cmake -S . -B "$BUILD_DIR" -G Ninja
 fi
 
-# 编译项目
-echo "COMPILATION IN PROGRESS..."
-cmake --build "$BUILD_DIR"
+# 编译
+echo "Building project..."
+cmake --build "$BUILD_DIR" --parallel
 
-# 编译完成提示
-echo "COMPILATION COMPLETED"
+echo "Build finished successfully."
