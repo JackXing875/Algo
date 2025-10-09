@@ -68,6 +68,70 @@ build DFS: CXX_EXECUTABLE_LINKER__DFS_ CMakeFiles/DFS.dir/src/DFS.cpp.o
   TARGET_PDB = DFS.dbg
 
 # =============================================================================
+# Object build statements for EXECUTABLE target ListDelete
+
+
+#############################################
+# Order-only phony target for ListDelete
+
+build cmake_object_order_depends_target_ListDelete: phony || CMakeFiles/ListDelete.dir
+
+build CMakeFiles/ListDelete.dir/src/ListDelete.cpp.o: CXX_COMPILER__ListDelete_unscanned_ /home/schrieffer/Algo/src/ListDelete.cpp || cmake_object_order_depends_target_ListDelete
+  DEP_FILE = CMakeFiles/ListDelete.dir/src/ListDelete.cpp.o.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
+  LAUNCHER = ccache 
+  OBJECT_DIR = CMakeFiles/ListDelete.dir
+  OBJECT_FILE_DIR = CMakeFiles/ListDelete.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target ListDelete
+
+
+#############################################
+# Link the executable ListDelete
+
+build ListDelete: CXX_EXECUTABLE_LINKER__ListDelete_ CMakeFiles/ListDelete.dir/src/ListDelete.cpp.o
+  OBJECT_DIR = CMakeFiles/ListDelete.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = ListDelete
+  TARGET_PDB = ListDelete.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target ListSort
+
+
+#############################################
+# Order-only phony target for ListSort
+
+build cmake_object_order_depends_target_ListSort: phony || CMakeFiles/ListSort.dir
+
+build CMakeFiles/ListSort.dir/src/ListSort.cpp.o: CXX_COMPILER__ListSort_unscanned_ /home/schrieffer/Algo/src/ListSort.cpp || cmake_object_order_depends_target_ListSort
+  DEP_FILE = CMakeFiles/ListSort.dir/src/ListSort.cpp.o.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
+  LAUNCHER = ccache 
+  OBJECT_DIR = CMakeFiles/ListSort.dir
+  OBJECT_FILE_DIR = CMakeFiles/ListSort.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target ListSort
+
+
+#############################################
+# Link the executable ListSort
+
+build ListSort: CXX_EXECUTABLE_LINKER__ListSort_ CMakeFiles/ListSort.dir/src/ListSort.cpp.o
+  OBJECT_DIR = CMakeFiles/ListSort.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = ListSort
+  TARGET_PDB = ListSort.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target algoLab1
 
 
@@ -261,7 +325,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/schrieffer/Algo/build
 
-build all: phony DFS algoLab1 mergeSort quickSort selectionSort test
+build all: phony DFS ListDelete ListSort algoLab1 mergeSort quickSort selectionSort test
 
 # =============================================================================
 # Built-in targets
