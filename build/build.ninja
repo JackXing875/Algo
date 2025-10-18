@@ -68,38 +68,6 @@ build DFS: CXX_EXECUTABLE_LINKER__DFS_ CMakeFiles/DFS.dir/src/DFS.cpp.o
   TARGET_PDB = DFS.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target ListDelete
-
-
-#############################################
-# Order-only phony target for ListDelete
-
-build cmake_object_order_depends_target_ListDelete: phony || CMakeFiles/ListDelete.dir
-
-build CMakeFiles/ListDelete.dir/src/ListDelete.cpp.o: CXX_COMPILER__ListDelete_unscanned_ /home/schrieffer/Algo/src/ListDelete.cpp || cmake_object_order_depends_target_ListDelete
-  DEP_FILE = CMakeFiles/ListDelete.dir/src/ListDelete.cpp.o.d
-  FLAGS = -std=gnu++17
-  INCLUDES = -I/home/schrieffer/Algo/include
-  LAUNCHER = ccache 
-  OBJECT_DIR = CMakeFiles/ListDelete.dir
-  OBJECT_FILE_DIR = CMakeFiles/ListDelete.dir/src
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target ListDelete
-
-
-#############################################
-# Link the executable ListDelete
-
-build ListDelete: CXX_EXECUTABLE_LINKER__ListDelete_ CMakeFiles/ListDelete.dir/src/ListDelete.cpp.o
-  OBJECT_DIR = CMakeFiles/ListDelete.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = ListDelete
-  TARGET_PDB = ListDelete.dbg
-
-# =============================================================================
 # Object build statements for EXECUTABLE target ListSort
 
 
@@ -259,38 +227,6 @@ build selectionSort: CXX_EXECUTABLE_LINKER__selectionSort_ CMakeFiles/selectionS
   TARGET_FILE = selectionSort
   TARGET_PDB = selectionSort.dbg
 
-# =============================================================================
-# Object build statements for EXECUTABLE target test
-
-
-#############################################
-# Order-only phony target for test
-
-build cmake_object_order_depends_target_test: phony || CMakeFiles/test.dir
-
-build CMakeFiles/test.dir/src/test.cpp.o: CXX_COMPILER__test_unscanned_ /home/schrieffer/Algo/src/test.cpp || cmake_object_order_depends_target_test
-  DEP_FILE = CMakeFiles/test.dir/src/test.cpp.o.d
-  FLAGS = -std=gnu++17
-  INCLUDES = -I/home/schrieffer/Algo/include
-  LAUNCHER = ccache 
-  OBJECT_DIR = CMakeFiles/test.dir
-  OBJECT_FILE_DIR = CMakeFiles/test.dir/src
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target test
-
-
-#############################################
-# Link the executable test
-
-build test: CXX_EXECUTABLE_LINKER__test_ CMakeFiles/test.dir/src/test.cpp.o
-  OBJECT_DIR = CMakeFiles/test.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = test
-  TARGET_PDB = test.dbg
-
 
 #############################################
 # Utility command for edit_cache
@@ -325,7 +261,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/schrieffer/Algo/build
 
-build all: phony DFS ListDelete ListSort algoLab1 mergeSort quickSort selectionSort test
+build all: phony DFS ListSort algoLab1 mergeSort quickSort selectionSort
 
 # =============================================================================
 # Built-in targets
