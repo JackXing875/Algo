@@ -2,26 +2,26 @@
 #include <vector>
 #include <stdexcept>
 
-template <typename datatype>
+template <typename T>
 class ListNode
 {
 public:
-    datatype val;
-    ListNode<datatype>* next;
+    T val;
+    ListNode<T>* next;
 
-    ListNode(datatype x) : val(x), next(nullptr) {}; 
+    ListNode(T x) : val(x), next(nullptr) {}; 
 };
 
-template <typename datatype>
+template <typename T>
 class LinkedList
 {
 private:
-    ListNode<datatype>* head;
+    ListNode<T>* head;
 
 public:
     LinkedList() : head(nullptr) {}
 
-    void create(const std::vector<datatype>& array)
+    void create(const std::vector<T>& array)
     {
         clear();
         if(array.empty()) 
@@ -30,21 +30,21 @@ public:
             return ;
         }
 
-        head = new ListNode<datatype>(array[0]);
-        ListNode<datatype>* cur = head;
+        head = new ListNode<T>(array[0]);
+        ListNode<T>* cur = head;
 
         for(size_t i = 1; i < array.size(); i++)
         {
-            cur->next = new ListNode<datatype>(array[i]);
+            cur->next = new ListNode<T>(array[i]);
             cur = cur->next;
         }
     }
 
     bool isEmpty() const { return !head; }
 
-    size_t getSize(ListNode<datatype>* head) const
+    size_t getSize(ListNode<T>* head) const
     {
-        ListNode<datatype>* cur = head;
+        ListNode<T>* cur = head;
         size_t num = 0;
 
         while(cur)
@@ -58,7 +58,7 @@ public:
 
     void traversal() const
     {
-        ListNode<datatype>* cur = head;
+        ListNode<T>* cur = head;
         while(cur)
         {
             std::cout << cur->val << std::endl;
@@ -66,25 +66,25 @@ public:
         }
     }
 
-    void append(datatype value)
+    void append(T value)
     {
         if(!head)
         {
-            head = new ListNode<datatype>(value);
+            head = new ListNode<T>(value);
             return ;
         }
 
-        ListNode<datatype>* cur = head;
+        ListNode<T>* cur = head;
         while(cur && cur->next) cur = cur->next;
 
-        cur->next = new ListNode<datatype>(value);
+        cur->next = new ListNode<T>(value);
     }
 
-    datatype get(size_t index) 
+    T get(size_t index) 
     {
         if(!head) throw std::out_of_range("Cannot get value in an empty list");
 
-        ListNode<datatype>* cur = head;
+        ListNode<T>* cur = head;
         size_t i = 0;
 
         while (cur && i < index) 
@@ -99,11 +99,11 @@ public:
         return cur->val;
     }
 
-    void set(size_t index, datatype value)
+    void set(size_t index, T value)
     {
         if(!head) throw std::out_of_range("Empty list");
 
-        ListNode<datatype>* cur = head;
+        ListNode<T>* cur = head;
         size_t i = 0;
 
         while (cur && i < index) 
@@ -118,17 +118,17 @@ public:
         cur->val = value;
     }
 
-    void insert(size_t index, datatype value)
+    void insert(size_t index, T value)
     {
         if(index == 0)
         {
-            ListNode<datatype>* newnode = new ListNode<datatype>(value);
+            ListNode<T>* newnode = new ListNode<T>(value);
             newnode->next = head;
             head = newnode;
             return ;
         }
 
-        ListNode<datatype>* cur = head;
+        ListNode<T>* cur = head;
         size_t i = 0;
 
         while (cur && i < index-1) 
@@ -140,9 +140,9 @@ public:
         if (!cur)
             throw std::out_of_range("Index out of range");
 
-        ListNode<datatype>* temp = cur->next;
+        ListNode<T>* temp = cur->next;
 
-        cur->next = new ListNode<datatype>(value);
+        cur->next = new ListNode<T>(value);
         cur->next->next = temp;
     }
 
@@ -153,13 +153,13 @@ public:
 
         if(index == 0) 
         {
-            ListNode<datatype>* newhead = head->next;
+            ListNode<T>* newhead = head->next;
             delete head;
             head = newhead;
             return ;
         }
 
-        ListNode<datatype>* cur = head;
+        ListNode<T>* cur = head;
         for(size_t i = 0;i < index - 1;i++) 
         {
             if(!cur->next)
@@ -170,17 +170,17 @@ public:
         if(!cur->next)
             throw std::out_of_range("Index out of range");
 
-        ListNode<datatype>* toDelete = cur->next;
+        ListNode<T>* toDelete = cur->next;
         cur->next = toDelete->next;
         delete toDelete;
     }
 
     void clear()
     {
-        ListNode<datatype>* cur = head;
+        ListNode<T>* cur = head;
         while(head)
         {
-            ListNode<datatype>* temp = head->next;
+            ListNode<T>* temp = head->next;
             delete head;
             head = temp;
         }

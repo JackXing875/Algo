@@ -1,28 +1,28 @@
 #include <vector>
 #include <stdexcept>
 
-template<typename datatype>
+template<typename T>
 class stack
 {
 private:
-    std::vector<datatype> array;
+    std::vector<T> array;
 
 public:
     bool isEmpty() const { return array.size() == 0; }
     
-    void push(datatype val) { array.push_back(val); }
+    void push(T val) { array.push_back(val); }
 
-    datatype pop()
+    T pop()
     {
         if(isEmpty()) 
             throw std::out_of_range("Stack is empty");
         
-        datatype topElement = array.back();
+        T topElement = array.back();
         array.pop_back();
         return topElement;
     }
 
-    datatype top() 
+    T top() 
     {
         if(isEmpty()) 
             throw std::out_of_range("Stack is empty");

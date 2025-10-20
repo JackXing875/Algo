@@ -4,26 +4,26 @@
 #include <stdexcept>
 
 
-template <typename datatype>
+template <typename T>
 class TreeNode
 {
 public:
-    datatype val;
-    TreeNode<datatype>* left;
-    TreeNode<datatype>* right;
+    T val;
+    TreeNode<T>* left;
+    TreeNode<T>* right;
 
-    TreeNode(datatype value) : val(value), left(nullptr), right(nullptr) {}
+    TreeNode(T value) : val(value), left(nullptr), right(nullptr) {}
 };
 
-template <typename datatype>
+template <typename T>
 class BST
 {
 private:
-    TreeNode<datatype>* root;
+    TreeNode<T>* root;
 
-    TreeNode<datatype>* insert(TreeNode<datatype>* node, datatype value)
+    TreeNode<T>* insert(TreeNode<T>* node, T value)
     {
-        if(!node) return new TreeNode<datatype>(value);
+        if(!node) return new TreeNode<T>(value);
 
         if(value < node->val) node->left = insert(node->left, value);
         else if(value > node->val) node->right = insert(node->right, value);
@@ -31,7 +31,7 @@ private:
         return node;
     }
 
-    TreeNode<datatype>* remove(TreeNode<datatype>* node, datatype value)
+    TreeNode<T>* remove(TreeNode<T>* node, T value)
     {
         if(!node) return nullptr;
 
@@ -41,18 +41,18 @@ private:
         {
             if(!node->left)
             {
-                TreeNode<datatype>* temp = node->right;
+                TreeNode<T>* temp = node->right;
                 delete node;
                 return temp;
             }
             if(!node->right)
             {
-                TreeNode<datatype>* temp = node->left;
+                TreeNode<T>* temp = node->left;
                 delete node;
                 return temp;
             }
 
-            TreeNode<datatype>* minNode = node->right;
+            TreeNode<T>* minNode = node->right;
 
             while(minNode->left) minNode = minNode->left;
             node->val = minNode->val;
@@ -62,7 +62,7 @@ private:
         return node;
     }
 
-    bool find(TreeNode<datatype>* node, datatype value) const
+    bool find(TreeNode<T>* node, T value) const
     {
         if(!node) return false;
 
@@ -71,23 +71,23 @@ private:
         else return find(node->right, value);
     }
 
-    TreeNode<datatype>* findNode(TreeNode<datatype>* node, datatype value) const
+    TreeNode<T>* findNode(TreeNode<T>* node, T value) const
     {
         if(!node || node->val == value) return node;
         if(value < node->val) return contain(node->left, value);
         else return contain(node->right, value);
     }
 
-    size_t getHeight(TreeNode<datatype>* node) const
+    size_t getHeight(TreeNode<T>* node) const
     {
         if(!node) return 0;
 
         return std::max(getHeight(node->left), getHeight(node->right)) + 1;
     }
 
-    bool isEmpty(TreeNode<datatype>* node) const { return node == nullptr; }
+    bool isEmpty(TreeNode<T>* node) const { return node == nullptr; }
 
-    void clear(TreeNode<datatype>* node)
+    void clear(TreeNode<T>* node)
     {
         if(!node) return;
 
@@ -97,50 +97,50 @@ private:
         node = nullptr;
     }
 
-    std::vector<datatype> preOrder(TreeNode<datatype>* node) const
+    std::vector<T> preOrder(TreeNode<T>* node) const
     {
         if(!node) return {};
 
-        std::vector<datatype> res;
+        std::vector<T> res;
 
         res.push_back(node->val);
 
-        std::vector<datatype> left = preOrder(node->left);
+        std::vector<T> left = preOrder(node->left);
         res.insert(res.end(), left.begin(), left.end());
 
-        std::vector<datatype> right = preOrder(node->right);
+        std::vector<T> right = preOrder(node->right);
         res.insert(res.end(), right.begin(), right.end());
 
         return res;
     }
 
-    std::vector<datatype> inOrder(TreeNode<datatype>* node) const
+    std::vector<T> inOrder(TreeNode<T>* node) const
     {
         if(!node) return {};
 
-        std::vector<datatype> res;
+        std::vector<T> res;
 
-        std::vector<datatype> left = inOrder(node->left);
+        std::vector<T> left = inOrder(node->left);
         res.insert(res.end(), left.begin(), left.end());
 
         res.push_back(node->val);
 
-        std::vector<datatype> right = inOrder(node->right);
+        std::vector<T> right = inOrder(node->right);
         res.insert(res.end(), right.begin(), right.end());
 
         return res;
     }
 
-    std::vector<datatype> postOrder(TreeNode<datatype>* node) const
+    std::vector<T> postOrder(TreeNode<T>* node) const
     {
         if(!node) return {};
 
-        std::vector<datatype> res;
+        std::vector<T> res;
 
-        std::vector<datatype> left = postOrder(node->left);
+        std::vector<T> left = postOrder(node->left);
         res.insert(res.end(), left.begin(), left.end());
 
-        std::vector<datatype> right = postOrder(node->right);
+        std::vector<T> right = postOrder(node->right);
         res.insert(res.end(), right.begin(), right.end());
 
         res.push_back(node->val);
@@ -148,13 +148,13 @@ private:
         return res;
     }
 
-    std::vector<std::vector<datatype>> levelOrder(TreeNode<datatype>* node) const
+    std::vector<std::vector<T>> levelOrder(TreeNode<T>* node) const
     {
         if(!node) return {};
 
-        std::queue<TreeNode<datatype>*> q;
-        std::vector<std::vector<datatype>> res;
-        std::vector<datatype> path;
+        std::queue<TreeNode<T>*> q;
+        std::vector<std::vector<T>> res;
+        std::vector<T> path;
         q.push(node);
 
         while(!q.empty())
@@ -162,7 +162,7 @@ private:
             int size = q.size();
             for(int i = 0; i < size; i++)
             {
-                TreeNode<datatype>* cur = q.front();
+                TreeNode<T>* cur = q.front();
                 q.pop();
 
                 path.push_back(cur->val);
@@ -185,42 +185,42 @@ public:
 
     size_t getHeight() const { return getHeight(root); }
 
-    void insert(datatype value) { root = insert(root, value); }
+    void insert(T value) { root = insert(root, value); }
 
-    void remove(datatype value) { root = remove(root, value); }
+    void remove(T value) { root = remove(root, value); }
 
-    bool find(datatype value) const { return find(root, value); }
+    bool find(T value) const { return find(root, value); }
 
-    TreeNode<datatype>* findNode(datatype value) const { return contain(root, value); }
+    TreeNode<T>* findNode(T value) const { return contain(root, value); }
 
-    std::vector<datatype> preOrder() const { return preOrder(root); }
+    std::vector<T> preOrder() const { return preOrder(root); }
 
-    std::vector<datatype> inOrder() const { return inOrder(root); }
+    std::vector<T> inOrder() const { return inOrder(root); }
 
-    std::vector<datatype> postOrder() const { return postOrder(root); }
+    std::vector<T> postOrder() const { return postOrder(root); }
 
-    std::vector<std::vector<datatype>> levelOrder() const { return levelOrder(root); }
+    std::vector<std::vector<T>> levelOrder() const { return levelOrder(root); }
 
     void clear() { clear(root); }
 
-    datatype Min()
+    T Min()
     {
         if(!root)
             throw std::out_of_range("Tree is empty");
 
-        TreeNode<datatype>* minNode = root;
+        TreeNode<T>* minNode = root;
 
         while(minNode->left) minNode = minNode->left;
 
         return minNode->val;
     }
 
-    datatype Max()
+    T Max()
     {
         if(!root)
             throw std::out_of_range("Tree is empty");
 
-        TreeNode<datatype>* maxNode = root;
+        TreeNode<T>* maxNode = root;
 
         while(maxNode->right) maxNode = maxNode->right;
 
