@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace structure {
+namespace ds {
 
 template <typename T>
 class Node {
@@ -172,12 +172,12 @@ public:
 };
 
 template <typename T>
-class Stack {
+class stack {
 private:
     Node<T> *top; 
 
 public:
-    Stack() : top(nullptr) {}
+    stack() : top(nullptr) {}
 
     // 压栈
     void push(T value) {
