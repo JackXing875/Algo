@@ -132,38 +132,6 @@ build algoLab1: CXX_EXECUTABLE_LINKER__algoLab1_ CMakeFiles/algoLab1.dir/src/alg
   TARGET_PDB = algoLab1.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target htmlAns
-
-
-#############################################
-# Order-only phony target for htmlAns
-
-build cmake_object_order_depends_target_htmlAns: phony || CMakeFiles/htmlAns.dir
-
-build CMakeFiles/htmlAns.dir/src/htmlAns.cpp.o: CXX_COMPILER__htmlAns_unscanned_ /home/schrieffer/Algo/src/htmlAns.cpp || cmake_object_order_depends_target_htmlAns
-  DEP_FILE = CMakeFiles/htmlAns.dir/src/htmlAns.cpp.o.d
-  FLAGS = -std=gnu++17
-  INCLUDES = -I/home/schrieffer/Algo/include
-  LAUNCHER = ccache 
-  OBJECT_DIR = CMakeFiles/htmlAns.dir
-  OBJECT_FILE_DIR = CMakeFiles/htmlAns.dir/src
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target htmlAns
-
-
-#############################################
-# Link the executable htmlAns
-
-build htmlAns: CXX_EXECUTABLE_LINKER__htmlAns_ CMakeFiles/htmlAns.dir/src/htmlAns.cpp.o
-  OBJECT_DIR = CMakeFiles/htmlAns.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = htmlAns
-  TARGET_PDB = htmlAns.dbg
-
-# =============================================================================
 # Object build statements for EXECUTABLE target mergeSort
 
 
@@ -293,7 +261,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/schrieffer/Algo/build
 
-build all: phony DFS ListSort algoLab1 htmlAns mergeSort quickSort selectionSort
+build all: phony DFS ListSort algoLab1 mergeSort quickSort selectionSort
 
 # =============================================================================
 # Built-in targets
