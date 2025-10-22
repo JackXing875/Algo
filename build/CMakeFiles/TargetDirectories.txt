@@ -1,6 +1,7 @@
 /home/schrieffer/Algo/build/CMakeFiles/DFS.dir
 /home/schrieffer/Algo/build/CMakeFiles/ListSort.dir
 /home/schrieffer/Algo/build/CMakeFiles/algoLab1.dir
+/home/schrieffer/Algo/build/CMakeFiles/htmlParser.dir
 /home/schrieffer/Algo/build/CMakeFiles/mergeSort.dir
 /home/schrieffer/Algo/build/CMakeFiles/quickSort.dir
 /home/schrieffer/Algo/build/CMakeFiles/selectionSort.dir

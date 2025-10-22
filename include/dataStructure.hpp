@@ -166,6 +166,8 @@ public:
         }
     }
 
+    Node<T>* getHead() const { return head; }
+
     ~LinkedList() {
         clear();
     }
