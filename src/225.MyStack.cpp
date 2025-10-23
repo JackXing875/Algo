@@ -28,13 +28,12 @@ public:
             q.pop();
             q.push(temp);
         }
-        
+
         int res = q.front();
         q.pop();
 
-        if (!q.empty()) {
+        if (!q.empty())
             topElem = q.back();
-        }
 
         return res;
     }
