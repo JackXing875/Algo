@@ -132,6 +132,38 @@ build algoLab1: CXX_EXECUTABLE_LINKER__algoLab1_ CMakeFiles/algoLab1.dir/src/alg
   TARGET_PDB = algoLab1.dbg
 
 # =============================================================================
+# Object build statements for EXECUTABLE target knight
+
+
+#############################################
+# Order-only phony target for knight
+
+build cmake_object_order_depends_target_knight: phony || CMakeFiles/knight.dir
+
+build CMakeFiles/knight.dir/src/knight.cpp.o: CXX_COMPILER__knight_unscanned_ /home/schrieffer/Algo/src/knight.cpp || cmake_object_order_depends_target_knight
+  DEP_FILE = CMakeFiles/knight.dir/src/knight.cpp.o.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
+  LAUNCHER = ccache 
+  OBJECT_DIR = CMakeFiles/knight.dir
+  OBJECT_FILE_DIR = CMakeFiles/knight.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target knight
+
+
+#############################################
+# Link the executable knight
+
+build knight: CXX_EXECUTABLE_LINKER__knight_ CMakeFiles/knight.dir/src/knight.cpp.o
+  OBJECT_DIR = CMakeFiles/knight.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = knight
+  TARGET_PDB = knight.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target mergeSort
 
 
@@ -261,7 +293,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/schrieffer/Algo/build
 
-build all: phony DFS ListSort algoLab1 mergeSort quickSort selectionSort
+build all: phony DFS ListSort algoLab1 knight mergeSort quickSort selectionSort
 
 # =============================================================================
 # Built-in targets
