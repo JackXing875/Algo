@@ -132,6 +132,38 @@ build algoLab1: CXX_EXECUTABLE_LINKER__algoLab1_ CMakeFiles/algoLab1.dir/src/alg
   TARGET_PDB = algoLab1.dbg
 
 # =============================================================================
+# Object build statements for EXECUTABLE target kmppro
+
+
+#############################################
+# Order-only phony target for kmppro
+
+build cmake_object_order_depends_target_kmppro: phony || CMakeFiles/kmppro.dir
+
+build CMakeFiles/kmppro.dir/src/kmppro.cpp.o: CXX_COMPILER__kmppro_unscanned_ /home/schrieffer/Algo/src/kmppro.cpp || cmake_object_order_depends_target_kmppro
+  DEP_FILE = CMakeFiles/kmppro.dir/src/kmppro.cpp.o.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
+  LAUNCHER = ccache 
+  OBJECT_DIR = CMakeFiles/kmppro.dir
+  OBJECT_FILE_DIR = CMakeFiles/kmppro.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target kmppro
+
+
+#############################################
+# Link the executable kmppro
+
+build kmppro: CXX_EXECUTABLE_LINKER__kmppro_ CMakeFiles/kmppro.dir/src/kmppro.cpp.o
+  OBJECT_DIR = CMakeFiles/kmppro.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = kmppro
+  TARGET_PDB = kmppro.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target mergeSort
 
 
@@ -261,7 +293,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/schrieffer/Algo/build
 
-build all: phony DFS ListSort algoLab1 mergeSort quickSort selectionSort
+build all: phony DFS ListSort algoLab1 kmppro mergeSort quickSort selectionSort
 
 # =============================================================================
 # Built-in targets
