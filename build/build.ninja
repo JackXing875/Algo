@@ -259,6 +259,38 @@ build selectionSort: CXX_EXECUTABLE_LINKER__selectionSort_ CMakeFiles/selectionS
   TARGET_FILE = selectionSort
   TARGET_PDB = selectionSort.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target temp
+
+
+#############################################
+# Order-only phony target for temp
+
+build cmake_object_order_depends_target_temp: phony || CMakeFiles/temp.dir
+
+build CMakeFiles/temp.dir/src/temp.cpp.o: CXX_COMPILER__temp_unscanned_ /home/schrieffer/Algo/src/temp.cpp || cmake_object_order_depends_target_temp
+  DEP_FILE = CMakeFiles/temp.dir/src/temp.cpp.o.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -I/home/schrieffer/Algo/include
+  LAUNCHER = ccache 
+  OBJECT_DIR = CMakeFiles/temp.dir
+  OBJECT_FILE_DIR = CMakeFiles/temp.dir/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target temp
+
+
+#############################################
+# Link the executable temp
+
+build temp: CXX_EXECUTABLE_LINKER__temp_ CMakeFiles/temp.dir/src/temp.cpp.o
+  OBJECT_DIR = CMakeFiles/temp.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = temp
+  TARGET_PDB = temp.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -293,7 +325,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/schrieffer/Algo/build
 
-build all: phony DFS ListSort algoLab1 kmppro mergeSort quickSort selectionSort
+build all: phony DFS ListSort algoLab1 kmppro mergeSort quickSort selectionSort temp
 
 # =============================================================================
 # Built-in targets
