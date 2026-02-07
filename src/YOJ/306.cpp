@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main() {
     int num;
     cin >> num;
     vector<int> input(num);
